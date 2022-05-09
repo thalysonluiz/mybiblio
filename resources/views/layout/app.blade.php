@@ -12,7 +12,7 @@
   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 
-<body class="h-full">
+<body class="h-full scrollbar-none">
   <!-- This example requires Tailwind CSS v2.0+ -->
   <!--
   This example requires updating your template:
@@ -32,12 +32,13 @@
   ```
 -->
   <div class="min-h-full">
-    <nav class="bg-mybiblio-400 dark:bg-mybiblio-blue-800">
+    <nav class="bg-mybiblio-400 dark:bg-mybiblio-blue-800 min-h-[300px]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
-            <div class="flex-shrink-0">
+            <div class="flex flex-shrink-0 items-center justify-center">
               <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+              <span class="px-3 self-center text-xl font-semibold whitespace-nowrap dark:text-white">MyBiblio</span>
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
@@ -62,7 +63,7 @@
           <div class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
               <button type="button"
-                class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                class="bg-gray-200 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                 <span class="sr-only">View notifications</span>
                 <!-- Heroicon name: outline/bell -->
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -74,14 +75,16 @@
 
               <!-- Profile dropdown -->
               <div class="profile-dropdown ml-3 relative">
-                <div>
+                <div class="">
                   <button type="button"
-                    class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                    class="overflow-hidden max-w-xs bg-gray-200 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span class="sr-only">Open user menu</span>
-                    <img class="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="">
+                    <svg class="w-8 h-8 text-gray-400 " fill="currentColor" viewBox="0 0 20 16"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd"></path>
+                    </svg>
                   </button>
                 </div>
 
@@ -114,7 +117,7 @@
           <div id="mobile-button" class="-mr-2 flex md:hidden">
             <!-- Mobile menu button -->
             <button type="button"
-              class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white transition-transform"
               aria-controls="mobile-menu" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <!--
@@ -141,7 +144,7 @@
       </div>
 
       <!-- Mobile menu, show/hide based on menu state. -->
-      <div class="hidden md:hidden" id="mobile-menu">
+      <div class="hidden pb-52 md:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
           <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
@@ -162,10 +165,12 @@
         <div class="pt-4 pb-3 border-t border-gray-700">
           <div class="flex items-center px-5">
             <button id="mobile-profile-dropdown" type="button" class="flex items-center justify-start">
-              <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt="">
+              <div class="flex-shrink-0 rounded-full overflow-hidden bg-gray-200">
+                <svg class="w-8 h-8 text-gray-400 " fill="currentColor" viewBox="0 0 20 16"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
+                  </path>
+                </svg>
               </div>
               <div class="ml-3">
                 <div class="text-base font-medium leading-none text-white">Tom Cook</div>
@@ -199,16 +204,16 @@
       </div>
     </nav>
 
-    <header class="bg-white shadow">
+    <header class="-mt-[220px]">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <h1 class="text-3xl font-bold text-white">Dashboard</h1>
       </div>
     </header>
     <main>
-      <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 -mt-10">
         <!-- Replace with your content -->
         <div class="px-4 py-6 sm:px-0">
-          <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+          <div class="bg-gray-50 border-2 border-solid shadow-sm border-gray-200 rounded-lg h-96"></div>
         </div>
         <!-- /End replace -->
       </div>
