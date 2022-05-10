@@ -12,7 +12,7 @@
   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 
-<body class="h-full scrollbar-none">
+<body class="h-full scrollbar-none bg-mybiblio-fundo-100">
   <!-- This example requires Tailwind CSS v2.0+ -->
   <!--
   This example requires updating your template:
@@ -37,7 +37,7 @@
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="flex flex-shrink-0 items-center justify-center">
-              <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+              <img class="h-12 w-14" src="{{ asset('assets/media/logos/icon.png') }}" alt="Pilha de livros">
               <span class="px-3 self-center text-xl font-semibold whitespace-nowrap dark:text-white">MyBiblio</span>
             </div>
             <div class="hidden md:block">
@@ -190,7 +190,8 @@
           </div>
           <div id="mobile-menu-user" class="hidden mt-3 px-2 space-y-1">
             <a href="#"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Your
+       
+       class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Your
               Profile</a>
 
             <a href="#"
@@ -213,7 +214,7 @@
       <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 -mt-10">
         <!-- Replace with your content -->
         <div class="px-4 py-6 sm:px-0">
-          <div class="bg-gray-50 border-2 border-solid shadow-sm border-gray-200 rounded-lg h-96"></div>
+          <div class="bg-white border-2 border-solid shadow-sm border-gray-200 rounded-lg h-96"></div>
         </div>
         <!-- /End replace -->
       </div>

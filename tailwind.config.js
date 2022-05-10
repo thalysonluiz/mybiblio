@@ -1,18 +1,19 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.tsx",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        'mybiblio-blue-400': '#2684FF',
-        'mybiblio-blue-800': '#134280',
-      },
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+    ],
+
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
-  },
-  plugins: [
-    require('tailwind-scrollbar'),
-  ],
-}
+
+    plugins: [require('@tailwindcss/forms')],
+};
