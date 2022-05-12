@@ -1,11 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+  /**
+   * @var Category
+   */
+  private $category;
+
+  public function __construct(Category $category)
+  {
+    $this->category = $category;
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -13,7 +26,11 @@ class CategoryController extends Controller
    */
   public function index()
   {
-    return view('categories');
+    $categories = $this->category->paginate(10);
+
+    $data = ['categories' => $categories];
+
+    return view('admin.categories.index', $data);
   }
 
   /**
