@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -40,7 +41,7 @@ class CategoryController extends Controller
    */
   public function create()
   {
-    //
+    return view('admin.categories.create');
   }
 
   /**
@@ -51,7 +52,14 @@ class CategoryController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $data = $request->all();
+    $data['created_at'] = date('Y-m-d H:i:s');
+    $data['cadastrado_por'] = Auth::user()->id;
+    //dd($data);
+    $category = $this->category->create($data);
+
+    //flash('Categoria Criado com Sucesso!')->success();
+    return redirect()->route('admin.categories.index');
   }
 
   /**

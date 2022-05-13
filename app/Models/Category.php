@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+  protected $fillable = ['nome_categoria', 'cadastrado_por', 'ativo'];
+  public $timestamps = true;
+
+  use HasFactory;
 }
