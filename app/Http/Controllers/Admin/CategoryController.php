@@ -55,13 +55,13 @@ class CategoryController extends Controller
   public function store(Request $request)
   {
     $data = $request->all();
-    $data['created_at'] = date('Y-m-d H:i:s');
+    //$data['created_at'] = date('Y-m-d H:i:s');
     $data['cadastrado_por'] = Auth::user()->id;
     //dd($data);
     $category = $this->category->create($data);
 
     //flash('Categoria Criado com Sucesso!')->success();
-    return redirect()->route('admin.categories.index');
+    return redirect()->route('categories.index');
   }
 
   /**
@@ -83,7 +83,11 @@ class CategoryController extends Controller
    */
   public function edit($id)
   {
-    //
+    $category = $this->category->findOrFail($id);
+
+    $data = ['category' => $category];
+
+    return view('admin.categories.edit', $data);
   }
 
   /**
@@ -95,7 +99,13 @@ class CategoryController extends Controller
    */
   public function update(Request $request, $id)
   {
-    //
+    $data = $request->all();
+
+    $category = $this->category->find($id);
+    $category->update($data);
+
+    //flash('Categoria Atualizada com Sucesso!')->success();
+    return redirect()->route('categories.index');
   }
 
   /**

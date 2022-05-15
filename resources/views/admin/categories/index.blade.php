@@ -67,7 +67,11 @@
                                                 <!--end::Product ID-->
                                                 <!--begin::Date added-->
                                                 <td class="py-3 text-end" data-order="Data inválida">
-                                                    {{ $category->user->name }}</td>
+                                                    <a
+                                                        href="{{ route('categories.edit', ['category' => $category->id]) }}">
+                                                        Editar
+                                                    </a>
+                                                </td>
                                                 <!--end::Date added-->
 
                                             </tr>
