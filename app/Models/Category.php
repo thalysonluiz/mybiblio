@@ -11,4 +11,9 @@ class Category extends Model
   public $timestamps = true;
 
   use HasFactory;
+
+  public function user()
+  {
+    return $this->belongsTo(User::class, 'cadastrado_por');
+  }
 }

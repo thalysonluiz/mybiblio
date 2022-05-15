@@ -27,9 +27,11 @@ class CategoryController extends Controller
    */
   public function index()
   {
+
     $categories = $this->category->paginate(10);
 
     $data = ['categories' => $categories];
+
 
     return view('admin.categories.index', $data);
   }
