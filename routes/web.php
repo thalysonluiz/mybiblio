@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,14 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
-//Route::get('/categories', [CategoryController::class, 'index'])->middleware(['auth'])->name('categories');
+Route::middleware(['auth'])->group(function () {
+  Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::resource('categories', CategoryController::class);
+    Route::resource('subcategories', SubcategoryController::class);
+  });
+});
 
-Route::resource('categories', CategoryController::class)->middleware(['auth']);
+
 
 require __DIR__ . '/auth.php';

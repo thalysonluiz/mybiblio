@@ -12,7 +12,7 @@
                     class="overflow-hidden shadow-sm sm:rounded-lg flex-1 min-h-[200px] p-6 bg-white border-b border-gray-200">
                     <div class="m-3">
                         <h2 class="text-2xl mb-4">Nova Categoria</h2>
-                        <form method="POST" action="{{ route('categories.store') }}">
+                        <form method="POST" action="{{ route('admin.categories.store') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="nome_categoria"
@@ -24,7 +24,7 @@
                                 </label>
                             </div>
                             <div class="flex justify-between">
-                                <a href="{{ route('categories.index') }}"
+                                <a href="{{ route('admin.categories.index') }}"
                                     class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Voltar</a>
                                 <button type="submit"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Salvar</button>

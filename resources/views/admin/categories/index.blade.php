@@ -14,7 +14,7 @@
                     <div class="card card-flush h-xl-100">
                         <!--begin::Card header-->
                         <div class="flex justify-between items-center p-2">
-                            <a href="{{ route('categories.create') }}"
+                            <a href="{{ route('admin.categories.create') }}"
                                 class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Criar
                                 Categoria</a>
                             <!--begin::Title-->
@@ -68,7 +68,7 @@
                                                 <!--begin::Date added-->
                                                 <td class="py-3 text-end" data-order="Data inválida">
                                                     <a
-                                                        href="{{ route('categories.edit', ['category' => $category->id]) }}">
+                                                        href="{{ route('admin.categories.edit', ['category' => $category->id]) }}">
                                                         Editar
                                                     </a>
                                                 </td>

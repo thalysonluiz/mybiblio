@@ -61,7 +61,7 @@ class CategoryController extends Controller
     $category = $this->category->create($data);
 
     //flash('Categoria Criado com Sucesso!')->success();
-    return redirect()->route('categories.index');
+    return redirect()->route('admin.categories.index');
   }
 
   /**
@@ -105,7 +105,7 @@ class CategoryController extends Controller
     $category->update($data);
 
     //flash('Categoria Atualizada com Sucesso!')->success();
-    return redirect()->route('categories.index');
+    return redirect()->route('admin.categories.index');
   }
 
   /**

@@ -46,4 +46,9 @@ class User extends Authenticatable
   {
     return $this->hasMany(Category::class, 'cadastrado_por');
   }
+
+  public function subcategory()
+  {
+    return $this->hasMany(Subcategory::class, 'cadastrado_por');
+  }
 }
