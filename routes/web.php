@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubcategoryController::class);
   });
