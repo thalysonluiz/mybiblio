@@ -9,6 +9,9 @@ class Subcategory extends Model
 {
   use HasFactory;
 
+  protected $fillable = ['nome_subcategoria', 'cadastrado_por', 'ativo', 'category_id'];
+  public $timestamps = true;
+
   public function user()
   {
     return $this->belongsTo(User::class, 'cadastrado_por');

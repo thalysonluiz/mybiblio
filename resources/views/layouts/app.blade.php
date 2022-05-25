@@ -13,9 +13,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -34,6 +33,17 @@
             {{ $slot }}
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.js') }}" defer></script>
+    <script src="{{ asset('js/nice-select.js') }}" defer></script>
+    <script>
+        $(document).ready(function() {
+            $('select').niceSelect();
+        });
+    </script>
+
 </body>
 
 </html>

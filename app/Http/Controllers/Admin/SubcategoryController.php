@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subcategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubcategoryController extends Controller
 {
@@ -41,7 +43,10 @@ class SubcategoryController extends Controller
    */
   public function create()
   {
-    //
+    $categories = Category::all(['id', 'nome_categoria']);
+    $data = ['categories' => $categories];
+
+    return view('admin.subcategories.create', $data);
   }
 
   /**
@@ -52,7 +57,14 @@ class SubcategoryController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $data = $request->all();
+    //$data['created_at'] = date('Y-m-d H:i:s');
+    $data['cadastrado_por'] = Auth::user()->id;
+    //dd($data);
+    $subcategory = $this->subcategory->create($data);
+
+    //flash('Categoria Criado com Sucesso!')->success();
+    return redirect()->route('admin.subcategories.index');
   }
 
   /**
@@ -74,7 +86,12 @@ class SubcategoryController extends Controller
    */
   public function edit($id)
   {
-    //
+    $subcategory = $this->subcategory->findOrFail($id);
+    $categories = Category::all(['id', 'nome_categoria']);
+
+    $data = ['subcategory' => $subcategory, 'categories' => $categories];
+
+    return view('admin.subcategories.edit', $data);
   }
 
   /**
