@@ -14,7 +14,10 @@ module.exports = {
       },
       colors: {
         'mybiblio-blue-400': '#2684FF',
-        'mybiblio-blue-800': '#134280',
+        'mybiblio-blue-500': '#1A65D8',
+        'mybiblio-blue-600': '#0078BC',
+        'mybiblio-blue-700': '#134280',
+        'mybiblio-blue-800': '#00273D',
         'mybiblio-comple-200': '#FF5340'
       },
     },
