@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SubcategoryController;
@@ -25,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubcategoryController::class);
+    Route::resource('books', BookController::class);
   });
 });
 

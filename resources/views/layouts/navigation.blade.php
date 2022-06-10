@@ -19,13 +19,13 @@
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.dashboard')">
+                    <x-nav-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.*')">
                         Livros
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
                         Categorias
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.subcategories.index')" :active="request()->routeIs('admin.subcategories.index')">
+                    <x-nav-link :href="route('admin.subcategories.index')" :active="request()->routeIs('admin.subcategories.*')">
                         SubCategorias
                     </x-nav-link>
                 </div>

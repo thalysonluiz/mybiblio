@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subcategory extends Model
+class Book extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['nome_subcategoria', 'cadastrado_por', 'ativo', 'category_id'];
+  protected $fillable = [
+    'isbn', 'cadastrado_por', 'ativo', 'titulo', 'subtitulo', 'category_id',
+    'subcategory_id', 'autor', 'editora', 'ano', 'edicao', 'n_paginas', 'descricao', 'slug'
+  ];
   public $timestamps = true;
 
   public function user()
@@ -22,8 +25,8 @@ class Subcategory extends Model
     return $this->belongsTo(Category::class);
   }
 
-  public function book()
+  public function subcategory()
   {
-    return $this->hasMany(Book::class);
+    return $this->belongsTo(Subcategory::class);
   }
 }

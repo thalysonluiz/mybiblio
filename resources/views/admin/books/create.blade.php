@@ -11,8 +11,8 @@
                 <div
                     class="overflow-hidden shadow-sm sm:rounded-lg flex-1 min-h-[200px] p-6 bg-white border-b border-gray-200">
                     <div class="m-3">
-                        <h2 class="text-2xl mb-4">Nova SubCategoria</h2>
-                        <form method="POST" action="{{ route('admin.subcategories.store') }}">
+                        <h2 class="text-2xl mb-4">Novo Livro</h2>
+                        <form method="POST" action="{{ route('admin.books.store') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="nome_subcategoria"

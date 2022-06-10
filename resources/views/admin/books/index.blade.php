@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-2xl text-white leading-tight">
-            SubCategorias
+            Livros
         </h2>
     </x-slot>
 
@@ -14,9 +14,9 @@
                     <div class="card card-flush h-xl-100">
                         <!--begin::Card header-->
                         <div class="flex justify-between items-center p-2">
-                            <a href="{{ route('admin.subcategories.create') }}"
+                            <a href="{{ route('admin.books.create') }}"
                                 class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Criar
-                                SubCategoria</a>
+                                Livro</a>
                             <!--begin::Title-->
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="card-label fw-bolder text-dark">Stock Report</span>
@@ -37,9 +37,12 @@
                                         class="text-xs text-gray-50 uppercase bg-gray-50 dark:bg-mybiblio-blue-800 dark:text-gray-400">
                                         <!--begin::Table row-->
                                         <tr>
-                                            <th class="px-5 py-3">#</th>
-                                            <th class="px-5 py-3">Nome</th>
+                                            <th class="px-5 py-3">ISBN</th>
+                                            <th class="px-5 py-3">Título</th>
+                                            <th class="px-5 py-3">Autor</th>
+                                            <th class="px-5 py-3">Ano</th>
                                             <th class="px-5 py-3">Categoria</th>
+                                            <th class="px-5 py-3">SubCategoria</th>
                                             <th class="px-5 py-3">Ações</th>
                                         </tr>
                                         <!--end::Table row-->
@@ -48,27 +51,31 @@
                                     <!--begin::Table body-->
                                     <tbody>
                                         <!-- dark:bg-gray-800 dark:border-gray-700 odd:dark:bg-gray-800 even:dark:bg-gray-700-->
-                                        @foreach ($subcategories as $subcategory)
+                                        @foreach ($books as $book)
                                             <tr
                                                 class=" border-b odd:bg-gray-50 even:bg-gray-200   hover:bg-gray-50 dark:hover:bg-gray-600">
                                                 <!--begin::Item-->
                                                 <td>
                                                     <a href="/metronic8/demo2/../demo2/apps/ecommerce/catalog/edit-product.html"
-                                                        class="py-3 text-dark text-hover-primary">{{ $subcategory->id }}</a>
+                                                        class="py-3 text-dark text-hover-primary">{{ $book->isbn }}</a>
                                                 </td>
                                                 <!--end::Item-->
 
 
                                                 <!--begin::Product ID-->
-                                                <td class="py-3 text-left">{{ $subcategory->nome_subcategoria }}</td>
+                                                <td class="py-3 text-left">{{ $book->titulo }}</td>
+                                                <td class="py-3 text-left">{{ $book->autor }}</td>
+                                                <td class="py-3 text-left">{{ $book->ano }}</td>
                                                 <td class="py-3 text-left">
-                                                    {{ $subcategory->category->nome_categoria }}
+                                                    {{ $book->category->nome_categoria }}
+                                                </td>
+                                                <td class="py-3 text-left">
+                                                    {{ $book->subcategory->nome_subcategoria }}
                                                 </td>
                                                 <!--end::Product ID-->
                                                 <!--begin::Date added-->
                                                 <td class="py-3 text-end" data-order="Data inválida">
-                                                    <a
-                                                        href="{{ route('admin.subcategories.edit', ['subcategory' => $subcategory->id]) }}">
+                                                    <a href="{{ route('admin.books.edit', ['book' => $book->id]) }}">
                                                         Editar
                                                     </a>
                                                 </td>
@@ -83,7 +90,7 @@
                                 </table>
                             </div>
                             <div class="row">
-                                {{ $subcategories->links() }}
+                                {{ $books->links() }}
                                 <div
                                     class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
                                 </div>
