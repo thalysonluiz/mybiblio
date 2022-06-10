@@ -15,14 +15,14 @@ class CreateSummariesTable extends Migration
   {
     Schema::create('summaries', function (Blueprint $table) {
       $table->id();
-      $table->string('titulo');
-      $table->integer('n_capitulo');
-      $table->text('objetivos')->nullable();
-      $table->boolean('ativo')->default(true);
+      // $table->string('titulo');
+      // $table->integer('n_capitulo');
+      // $table->text('objetivos')->nullable();
+      // $table->boolean('ativo')->default(true);
       $table->timestamps();
 
-      $table->foreignId('cadastrado_por')->constrained('users');
-      $table->foreignId('book_id')->constrained('books');
+      // $table->foreignId('cadastrado_por')->constrained('users');
+      // $table->foreignId('book_id')->constrained('books');
     });
   }
 

@@ -22,7 +22,7 @@ class UpdateBooksTable extends Migration
       $table->integer('ano');
       $table->integer('edicao')->default(1);
       $table->integer('n_paginas');
-      $table->text('descricao');
+      $table->text('descricao')->nullable();
       $table->boolean('ativo')->default(true);
       $table->string('slug');
 

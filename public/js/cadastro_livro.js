@@ -1,0 +1,223 @@
+$(document).ready(function () {
+  /*$('#cpf').inputmask('999.999.999-99');
+  $('#cep').inputmask('99999-999');
+  $('#dt_nascimento').inputmask('99/99/9999');
+  $('#cartao_sus').inputmask('999999999999999');
+
+  $( "#dt_nascimento" ).datepicker({
+    format: "dd/mm/yyyy", // mm/dd/yyyy
+    language: "pt-BR",
+    autoclose: true,
+    todayHighlight: true,
+    changeMonth: true,
+    changeYear: true,
+    toggleActive: true
+  });*/
+
+  var date = new Date();
+
+  let selectSub = document.querySelector('.subcategory_id');
+
+  function setSelectSubcategory(options) {
+
+    options.forEach(function (option) {
+      let option1 = document.createElement('option');
+      option1.value = option.id;
+      option1.text = option.nome_subcategoria;
+      selectSub.appendChild(option1);
+    });
+  }
+
+  $('.category_id').change(function (e) {
+
+    $('.subcategory_id').empty();
+    const id = $(this).val();
+    $.ajax({
+      type: 'GET',
+      url: `../subcategories/${id}/ajax`,  //URL solicitada
+      success: function (data) { //O HTML é retornado em 'data'
+        //console.log(data);
+        setSelectSubcategory(data);
+        //$(".subcategory_id").html(options); //Se sucesso um alert com o conteúdo retornado pela URL solicitada será exibido.
+      }
+    });
+  });
+
+  // var showErrorMsg = function(type, msg) {
+
+  // 		var content = {};
+
+  // 		content.message = msg;
+
+  // 		var notify = $.notify(content, {
+  // 			type: type,
+  // 			allow_dismiss: true,
+  // 			newest_on_top: false,
+  // 			mouse_over:  false,
+  // 			showProgressbar:  false,
+  // 			spacing: 10,
+  // 			timer: 2000,
+  // 			placement: {
+  // 				from: 'top',
+  // 				align: 'center'
+  // 			},
+  // 			offset: {
+  // 				x: 30,
+  // 				y: 30
+  // 			},
+  // 			delay: 1000,
+  // 			z_index: 10000,
+  // 			animate: {
+  // 				enter: 'animated bounce' ,
+  // 				exit: 'animated bounceOutUp'
+  // 			}
+  // 		});
+
+  // 		/*if ($('#kt_notify_progress').prop('checked')) {
+  // 			setTimeout(function() {
+  // 				notify.update('message', '<strong>Saving</strong> Page Data.');
+  // 				notify.update('type', 'primary');
+  // 				notify.update('progress', 20);
+  // 			}, 1000);
+
+  // 			setTimeout(function() {
+  // 				notify.update('message', '<strong>Saving</strong> User Data.');
+  // 				notify.update('type', 'warning');
+  // 				notify.update('progress', 40);
+  // 			}, 2000);
+
+  // 			setTimeout(function() {
+  // 				notify.update('message', '<strong>Saving</strong> Profile Data.');
+  // 				notify.update('type', 'danger');
+  // 				notify.update('progress', 65);
+  // 			}, 3000);
+
+  // 			setTimeout(function() {
+  // 				notify.update('message', '<strong>Checking</strong> for errors.');
+  // 				notify.update('type', 'success');
+  // 				notify.update('progress', 100);
+  // 			}, 4000);
+  // 		}*/
+  // };
+
+  /* Executa a requisição quando o campo CEP perder o foco */
+  $('.isbn').blur(function () {//alert($('#cep').val());
+    //console.log('teste');
+    var btn = $(this);
+    var form = $(this).closest('form');
+
+    if ($(".isbn").val() != '') {
+      /* Configura a requisição AJAX */
+      const isbn = $('.isbn').val();
+      $.ajax({
+        type: 'GET',
+        url: `${isbn}/ajax`, /* Tipo de transmissão */
+        beforeSend: function () {
+          //clearErrors();
+          //btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
+          //$("#btn_login").siblings(".help-block").html(loadingImg("Verificando..."));
+        },
+        success: function (data) {
+          if (data.total > 0) {
+            //alert(data.rua);
+            $('input[name=titulo]').val(data.titulo);
+            $('input[name=subtitulo]').val(data.subtitulo);
+            $('input[name=editora]').val(data.editora);
+            $('textarea[name=descricao]').val(data.obs);
+            $('input[name=n_paginas]').val(data.paginas);
+            $('input[name=autor]').val(data.autores);
+            $('input[name=ano]').val(data.dataPublicado);
+            $('input[name=capa]').val(data.capa);
+
+            $('input[name=edicao]').focus();
+            //btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+          } else {
+            //alert("Error");
+            $('input[name=titulo]').val("");
+            $('input[name=subtitulo]').val("");
+            $('input[name=editora]').val("");
+            $('textarea[name=descricao]').val("");
+            $('input[name=n_paginas]').val("");
+            $('input[name=autor]').val("");
+            $('input[name=ano]').val("");
+            $('input[name=capa]').val("");
+            $('input[name=edicao]').val("");
+
+            //btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+            //showErrorMsg('danger', 'ISBN não encontrado!');
+
+          }
+        },
+        error: function (response) {
+          console.log(response);
+          //btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+          //showErrorMsg('danger', 'Erro ao buscar ISBN!');
+        }
+      });
+    }
+
+    return false;
+  });
+
+  var ano_atual = date.getFullYear();
+  //var ano_ini = ano_atual - 100;
+  var form = $("#form_livro");
+
+  // $('#btn_submit').click(function () {
+  // 	form.validate({
+  // 		rules: {
+  // 			isbn_livro: {
+  // 				required: true,
+  // 				minlength: 10,
+  // 				maxlength: 13,
+  // 				digits: true
+  // 			},
+  // 			nome_livro: {
+  // 				required: true,
+  // 				maxlength: 250,
+  // 			},
+  // 			subtitulo_livro: {
+  // 				maxlength: 200
+  // 			},
+  // 			autor_livro: {
+  // 				required: true,
+  // 				minlength: 3,
+  // 				maxlength: 150
+  // 			},
+  // 			editora_livro: {
+  // 				required: true,
+  // 				maxlength: 60
+  // 			},
+  // 			ano_livro: {
+  // 				required: true,
+  // 				min: 1950,
+  // 				max: ano_atual,
+  // 				digits: true
+  // 			},
+  // 			ed_livro: {
+  // 				digits: true,
+  // 				min: 1
+  // 			},
+  // 			n_paginas: {
+  // 				digits: true,
+  // 				min: 1
+  // 			},
+  // 			id_livro_cat: {
+  // 				required: true
+  // 			},
+  // 			id_livro_subcat: {
+  // 				required: true
+  // 			},
+  // 			link_livro: {
+  // 				url: true
+  // 			},
+  // 		}
+  // 	});
+
+  // 	if (!form.valid()) {
+  // 		return;
+  // 	}
+  // });
+
+
+});
