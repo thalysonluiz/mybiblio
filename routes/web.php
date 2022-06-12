@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/subcategories/{id}/ajax', [SubcategoryController::class, 'getSubcategoriesByCategory'])->name('subcategories.ajax');
     Route::get('/books/{isbn}/ajax', [BookController::class, 'getIsbnAjax'])->name('books.ajax');
+    Route::get('/summaries/{book_id}/create', [SummaryController::class, 'newSummary'])->name('summaries.new');
   });
 });
 

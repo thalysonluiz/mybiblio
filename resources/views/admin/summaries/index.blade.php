@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-2xl text-white leading-tight">
-            SubCategorias
+            Categorias
         </h2>
     </x-slot>
 
@@ -14,9 +14,9 @@
                     <div class="card card-flush h-xl-100">
                         <!--begin::Card header-->
                         <div class="flex justify-between items-center p-2">
-                            <a href="{{ route('admin.subcategories.create') }}"
+                            <a href="{{ route('admin.categories.create') }}"
                                 class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Criar
-                                SubCategoria</a>
+                                Categoria</a>
                             <!--begin::Title-->
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="card-label fw-bolder text-dark">Stock Report</span>
@@ -39,7 +39,6 @@
                                         <tr>
                                             <th class="px-5 py-3">#</th>
                                             <th class="px-5 py-3">Nome</th>
-                                            <th class="px-5 py-3">Categoria</th>
                                             <th class="px-5 py-3">Ações</th>
                                         </tr>
                                         <!--end::Table row-->
@@ -48,28 +47,29 @@
                                     <!--begin::Table body-->
                                     <tbody>
                                         <!-- dark:bg-gray-800 dark:border-gray-700 odd:dark:bg-gray-800 even:dark:bg-gray-700-->
-                                        @foreach ($subcategories as $subcategory)
+                                        @foreach ($categories as $category)
                                             <tr
                                                 class=" border-b odd:bg-gray-50 even:bg-gray-200   hover:bg-gray-50 dark:hover:bg-gray-600">
                                                 <!--begin::Item-->
                                                 <td>
                                                     <a href="/metronic8/demo2/../demo2/apps/ecommerce/catalog/edit-product.html"
-                                                        class="py-3 text-dark text-hover-primary">{{ $subcategory->id }}</a>
+                                                        class="py-3 text-dark text-hover-primary">{{ $category->id }}</a>
                                                 </td>
                                                 <!--end::Item-->
 
 
                                                 <!--begin::Product ID-->
-                                                <td class="py-3 text-left">{{ $subcategory->nome_subcategoria }}</td>
-                                                <td class="py-3 text-left">
-                                                    {{ $subcategory->category->nome_categoria }}
-                                                </td>
+
+
+
+
+                                                <td class="py-3 text-left">{{ $category->nome_categoria }}</td>
                                                 <!--end::Product ID-->
                                                 <!--begin::Date added-->
                                                 <td class="py-3 flex items-center justify-center gap-2"
                                                     data-order="Data inválida">
                                                     <a
-                                                        href="{{ route('admin.subcategories.edit', ['subcategory' => $subcategory->id]) }}">
+                                                        href="{{ route('admin.categories.edit', ['category' => $category->id]) }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                             stroke-width="2">
@@ -77,12 +77,6 @@
                                                                 d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                         </svg>
                                                     </a>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                        stroke-width="2">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                    </svg>
                                                 </td>
                                                 <!--end::Date added-->
 
@@ -95,7 +89,7 @@
                                 </table>
                             </div>
                             <div class="row">
-                                {{ $subcategories->links() }}
+                                {{ $categories->links() }}
                                 <div
                                     class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
                                 </div>
@@ -113,7 +107,23 @@
                 </div>
             </div>
 
+
+
+
+
+
+
+
+
+
+
         </div>
+
+
+
+
+
+
 
     </div>
 
