@@ -53,7 +53,7 @@
                                         <!-- dark:bg-gray-800 dark:border-gray-700 odd:dark:bg-gray-800 even:dark:bg-gray-700-->
                                         @foreach ($books as $book)
                                             <tr
-                                                class=" border-b odd:bg-gray-50 even:bg-gray-200   hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                class=" border-b odd:bg-gray-50 even:bg-gray-200   hover:bg-gray-50 dark:hover:bg-gray-300">
                                                 <!--begin::Item-->
                                                 <td>
                                                     <a href="#"

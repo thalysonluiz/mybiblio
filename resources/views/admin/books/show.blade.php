@@ -20,7 +20,7 @@
                                 {{-- <dt class="text-sm font-medium text-gray-500">Capa</dt> --}}
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><img
                                         src="{{ !empty($book->capa) ? $book->capa : asset('assets/media/book_cover.png') }}"
-                                        alt="Imagem capa livro" class="w-32" srcset=""></dd>
+                                        alt="Imagem capa livro" class="w-28" srcset=""></dd>
                             </div>
                             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-gray-500">ISBN</dt>
@@ -138,7 +138,7 @@
                                         <!-- dark:bg-gray-800 dark:border-gray-700 odd:dark:bg-gray-800 even:dark:bg-gray-700-->
                                         @foreach ($summaries as $summary)
                                             <tr
-                                                class=" border-b odd:bg-gray-50 even:bg-gray-200   hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                class=" border-b odd:bg-gray-50 even:bg-gray-200   hover:bg-gray-50 dark:hover:bg-gray-300">
                                                 <!--begin::Item-->
                                                 <td>
                                                     <a href="#"
@@ -150,11 +150,17 @@
                                                 <!--begin::Product ID-->
                                                 <td class="py-3 text-left">{{ $summary->titulo }}</td>
                                                 <!--begin::Date added-->
-                                                <td class="py-3 text-end" data-order="Data inválida">
+                                                <td class="py-3 flex items-center justify-center gap-2"
+                                                    data-order="Data inválida">
 
                                                     <a
                                                         href="{{ route('admin.summaries.edit', ['summary' => $summary->id]) }}">
-                                                        Editar
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                        </svg>
                                                     </a>
                                                 </td>
                                                 <!--end::Date added-->

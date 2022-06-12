@@ -779,8 +779,8 @@ select {
 .w-48 {
   width: 12rem;
 }
-.w-32 {
-  width: 8rem;
+.w-28 {
+  width: 7rem;
 }
 .w-0 {
   width: 0px;
@@ -1623,6 +1623,11 @@ select {
   .dark\:hover\:bg-gray-600:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+  }
+
+  .dark\:hover\:bg-gray-300:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(209 213 219 / var(--tw-bg-opacity));
   }
 
   .dark\:hover\:text-white:hover {
