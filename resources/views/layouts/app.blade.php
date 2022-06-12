@@ -22,14 +22,14 @@
         @include('layouts.navigation')
 
         <!-- Page Heading -->
-        <header class="bg-mybiblio-blue-600 min-h-[160px] rounded-b-xl">
+        <header class="bg-mybiblio-blue-600 min-h-[200px] rounded-b-xl">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
         </header>
 
         <!-- Page Content -->
-        <main class="-mt-[120px]">
+        <main class="-mt-[155px]">
             {{ $slot }}
         </main>
     </div>

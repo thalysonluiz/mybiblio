@@ -42,4 +42,9 @@ class Book extends Model
   {
     return $this->belongsTo(Subcategory::class);
   }
+
+  public function summaries()
+  {
+    return $this->hasMany(Summary::class);
+  }
 }

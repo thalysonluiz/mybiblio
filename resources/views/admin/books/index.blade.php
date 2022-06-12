@@ -56,27 +56,42 @@
                                                 class=" border-b odd:bg-gray-50 even:bg-gray-200   hover:bg-gray-50 dark:hover:bg-gray-600">
                                                 <!--begin::Item-->
                                                 <td>
-                                                    <a href="/metronic8/demo2/../demo2/apps/ecommerce/catalog/edit-product.html"
+                                                    <a href="#"
                                                         class="py-3 text-dark text-hover-primary">{{ $book->isbn }}</a>
                                                 </td>
                                                 <!--end::Item-->
 
 
                                                 <!--begin::Product ID-->
-                                                <td class="py-3 text-left">{{ $book->titulo }}</td>
-                                                <td class="py-3 text-left">{{ $book->autor }}</td>
-                                                <td class="py-3 text-left">{{ $book->ano }}</td>
-                                                <td class="py-3 text-left">
+                                                <td class="py-3 text-center">{{ $book->titulo }}</td>
+                                                <td class="py-3 text-center">{{ $book->autor }}</td>
+                                                <td class="py-3 text-center">{{ $book->ano }}</td>
+                                                <td class="py-3 text-center">
                                                     {{ $book->category->nome_categoria }}
                                                 </td>
-                                                <td class="py-3 text-left">
+                                                <td class="py-3 text-center">
                                                     {{ $book->subcategory->nome_subcategoria }}
                                                 </td>
                                                 <!--end::Product ID-->
                                                 <!--begin::Date added-->
-                                                <td class="py-3 text-end" data-order="Data inválida">
+                                                <td class="py-3 flex items-center justify-center gap-2"
+                                                    data-order="Data inválida">
+                                                    <a
+                                                        href="{{ route('admin.books.show', ['book' => $book->slug]) }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                        </svg>
+                                                    </a>
                                                     <a href="{{ route('admin.books.edit', ['book' => $book->id]) }}">
-                                                        Editar
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                        </svg>
                                                     </a>
                                                 </td>
                                                 <!--end::Date added-->

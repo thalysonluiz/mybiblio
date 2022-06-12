@@ -73,9 +73,14 @@ class BookController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show($slug)
   {
-    //
+    $book = $this->book->where('slug', $slug)->first();
+    $summaries = $book->summaries()->paginate(10);
+
+    $data = ['book' => $book, 'summaries' => $summaries];
+
+    return view('admin.books.show', $data);
   }
 
   /**
