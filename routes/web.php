@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SummaryController;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::get('/busca', [GuestController::class, 'processSearch'])->name('processSearch');
+Route::get('/busca/{busca}', [GuestController::class, 'busca'])->name('busca');
 
 Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->name('admin.')->group(function () {
