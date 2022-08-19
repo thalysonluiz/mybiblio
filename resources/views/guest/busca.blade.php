@@ -56,19 +56,21 @@
                             @foreach ($summaries as $summary)
                                 <div class="flex items-center mb-2 shadow rounded-md border border-gray-400">
                                     <div class="flex-shrink-0">
-                                        <div
-                                            class="flex items-center justify-center h-20 w-20 rounded-md bg-gray-100 dark:bg-gray-500">
-                                            <img src="{{ !empty($book->capa) ? $book->capa : asset('assets/media/book_cover.png') }}"
-                                                alt="Imagem capa livro" class="w-full" srcset="">
+                                        <div class="flex items-center justify-center h-24 w-20 rounded-md bg-gray-100 ">
+                                            <img src="{{ !empty($summary->book->capa) ? $summary->book->capa : asset('assets/media/book_cover.png') }}"
+                                                alt="Imagem capa livro" class="h-20" srcset="">
                                         </div>
                                     </div>
-                                    <div class="ml-4">
+                                    <div class="ml-4 flex flex-col justify-between h-20">
                                         <div class="text-sm leading-5 font-medium text-blue-600 dark:text-blue-800">
-                                            {{ $summary->n_capitulo . ' - ' . $summary->titulo }}</div>
+                                            <a href="#">{{ $summary->n_capitulo . ' - ' . $summary->titulo }}</a>
+                                        </div>
                                         <div class="text-sm leading-5 text-gray-500 dark:text-gray-700">
-                                            {{ ' <b>Livro<b>: ' . $summary->book->titulo }}</div>
+                                            {{ ' Livro: ' . $summary->book->titulo }}
+                                        </div>
                                         <div class="text-sm leading-5 text-gray-500 dark:text-gray-700">
-                                            {{ $summary->objetivos }}</div>
+                                            {{ $summary->objetivos }}
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
