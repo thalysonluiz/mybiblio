@@ -91,7 +91,11 @@ class BookController extends Controller
    */
   public function edit($id)
   {
-    //
+    $book = $this->book->find($id);
+    $categories = Category::all(['id', 'nome_categoria']);
+    $subcategories = Subcategory::all(['id', 'nome_subcategoria']);
+    $data = ['book' => $book, 'categories' => $categories, 'subcategories' => $subcategories];
+    return view('admin.books.edit', $data);
   }
 
   /**
@@ -103,7 +107,12 @@ class BookController extends Controller
    */
   public function update(Request $request, $id)
   {
-    //
+    $data = $request->all();
+    $data['cadastrado_por'] = Auth::user()->id;
+    $book = $this->book->find($id);
+    $book->update($data);
+    //flash('Categoria Atualizado com Sucesso!')->success();
+    return redirect()->route('admin.books.index');
   }
 
   /**
