@@ -16,10 +16,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                    {{-- <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.*')">
+                     <x-nav-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.*')">
                         Livros
                     </x-nav-link>
                     <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
@@ -27,7 +27,7 @@
                     </x-nav-link>
                     <x-nav-link :href="route('admin.subcategories.index')" :active="request()->routeIs('admin.subcategories.*')">
                         SubCategorias
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
             </div>
 
