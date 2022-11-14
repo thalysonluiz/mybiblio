@@ -36,6 +36,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/flowbite.js') }}" defer></script>
     <script src="{{ asset('js/jquery.js') }}" defer></script>
     <script src="{{ asset('js/nice-select.js') }}" defer></script>
     <script src="{{ asset('js/cadastro_livro.js') }}" defer></script>
