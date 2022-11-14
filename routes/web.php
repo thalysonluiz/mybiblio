@@ -26,6 +26,10 @@ Route::get('/busca/{busca}', [GuestController::class, 'busca'])->name('busca');
 Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+    Route::get('/books/importar', [BookController::class, 'import'])->name('books.importar');
+    Route::post('/books/importExcel', [BookController::class, 'storeImport'])->name('importarExcel');
+
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubcategoryController::class);
     Route::resource('books', BookController::class);

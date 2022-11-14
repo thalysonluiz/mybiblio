@@ -15,8 +15,13 @@
                         <!--begin::Card header-->
                         <div class="flex justify-between items-center p-2">
                             <a href="{{ route('admin.books.create') }}"
-                                class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Criar
-                                Livro</a>
+                                class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                Novo Livro
+                            </a>
+                            <a href="{{ route('admin.books.importar') }}"
+                                class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">
+                                Importar
+                            </a>
                             <!--begin::Title-->
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="card-label fw-bolder text-dark">Stock Report</span>
@@ -76,8 +81,7 @@
                                                 <!--begin::Date added-->
                                                 <td class="py-3 flex items-center justify-center gap-2"
                                                     data-order="Data inválida">
-                                                    <a
-                                                        href="{{ route('admin.books.show', ['book' => $book->slug]) }}">
+                                                    <a href="{{ route('admin.books.show', ['book' => $book->slug]) }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                             stroke-width="2">

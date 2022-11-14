@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Traits\IOExcelTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
+
+  use IOExcelTrait;
   /**
    * @var Book
    */
@@ -124,6 +127,20 @@ class BookController extends Controller
   public function destroy($id)
   {
     //
+  }
+
+  public function import()
+  {
+    return view('admin.books.import');
+  }
+
+  public function storeImport(Request $request)
+  {
+    $notification = $this->importExcel($request);
+
+    $data = ['notification' => $notification];
+
+    return view('admin.books.import', $data);
   }
 
   public function getIsbnAjax($isbn)
