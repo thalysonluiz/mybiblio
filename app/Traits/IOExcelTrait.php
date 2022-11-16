@@ -2,9 +2,10 @@
 
 namespace App\Traits;
 
-use App\Models\Cadastro;
-use App\Models\Endereco;
+use App\Models\Book;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 trait IOExcelTrait
@@ -25,52 +26,51 @@ trait IOExcelTrait
     $i = 0;
     foreach ($data as $item) {
       //condition to verify if has 3 collumns in the worksheet
-      if (count($item) == 14) {
+      if (count($item) == 12) {
         //your condition here to first line
         if ($line == 0) {
           //
         }
         if ($line > 0) {
-          $dt_nascimento = date("Y-m-d", strtotime($item[4]));
+          //$dt_criacao = date("Y-m-d H:i:s");
+          $cadastrado_por = Auth::user()->id;
           $lines[$i] = $item;
-          //verify if the current customer exists
-          $cpf = $this->validCpf($item[3]);
-          $cadastro = Cadastro::where('cpf', $cpf)->first();
-          //if exists cadastro
-          if (!empty($cadastro)) {
-            $cadastro->update([
-              'nome' => $item[0],
-              'dt_nascimento' => $dt_nascimento,
-              'sexo' => $item[2],
-              'celular' => $item[11],
-              'email' => $item[12],
-              'cpf' => $cpf,
-              'nome_social' => $item[1],
-              'profissao' => $item[13],
-              'nacionalidade' => $item[5]
+
+          $book = Book::where('isbn', $item[0])->first();
+          //if exists book
+          if (!empty($book)) {
+            $book->update([
+              'isbn' => $item[0],
+              'titulo' => $item[1],
+              'subtitulo' => $item[2],
+              'autor' => $item[3],
+              'editora' => $item[4],
+              'ano' => $item[5],
+              'edicao' => $item[6],
+              'n_paginas' => $item[7],
+              'descricao' => $item[8],
+              'cadastrado_por' => $cadastrado_por,
+              'category_id' => $item[9],
+              'subcategory_id' => $item[10],
+              'capa' => $item[11]
             ]);
             $updated++;
             //if not exists
           } else {
-            $voluntario = Cadastro::create([
-              'nome' => $item[0],
-              'dt_nascimento' => $dt_nascimento,
-              'sexo' => $item[2],
-              'celular' => $item[11],
-              'email' => $item[12],
-              'cpf' => $cpf,
-              'nome_social' => $item[1],
-              'profissao' => $item[13],
-              'nacionalidade' => $item[5]
-            ]);
-
-            Endereco::create([
-              'logradouro' => $item[6],
-              'bairro' => $item[7],
-              'cidade' => $item[8],
-              'uf' => $item[9],
-              'cep' => $item[10],
-              'cadastro_id' => $voluntario->id
+            $livro = book::create([
+              'isbn' => $item[0],
+              'titulo' => $item[1],
+              'subtitulo' => $item[2],
+              'autor' => $item[3],
+              'editora' => $item[4],
+              'ano' => $item[5],
+              'edicao' => $item[6],
+              'n_paginas' => $item[7],
+              'descricao' => $item[8],
+              'cadastrado_por' => $cadastrado_por,
+              'category_id' => $item[9],
+              'subcategory_id' => $item[10],
+              'capa' => $item[11]
             ]);
 
             $created++;
@@ -81,7 +81,7 @@ trait IOExcelTrait
         //not exists 3 columns in the worksheet
 
       } else {
-        throw new Exception();
+        throw new Exception("Número de colunas inválido");
       }
     }
     //returns imported worksheet notification
