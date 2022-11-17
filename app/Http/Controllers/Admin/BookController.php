@@ -96,7 +96,7 @@ class BookController extends Controller
   {
     $book = $this->book->find($id);
     $categories = Category::all(['id', 'nome_categoria']);
-    $subcategories = Subcategory::all(['id', 'nome_subcategoria']);
+    $subcategories = Subcategory::where('category_id', $book->category_id)->get();
     $data = ['book' => $book, 'categories' => $categories, 'subcategories' => $subcategories];
     return view('admin.books.edit', $data);
   }
